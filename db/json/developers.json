@@ -1,0 +1,44 @@
+[{
+    "developerJSON": {
+      "name": "Brais Moure"
+    },
+    "gitHubJSON": {
+      "gitUser": "MoureDev",
+      "respositories":[{
+        "name": "Repositorio de prueba 1"
+      },{
+        "name": "Repositorio de prueba 2"
+      }
+    ]
+    }
+
+  }, {
+    "developerJSON": {
+      "name": "Miguel Ángel Durán"
+    },
+    "gitHubJSON": {
+      "gitUser": "midudev"
+    }
+
+  },{
+    "developerJSON": {
+      "name": " Fernando Herrera"
+    },
+    "gitHubJSON": {
+      "gitUser": "Klerith"
+    }
+  
+  },{
+    "developerJSON": {
+      "name": "Carlos Azaustre"
+    },
+    "gitHubJSON": {
+      "gitUser": "carlosazaustre"
+    }
+  
+  }
+
+
+
+
+]
