@@ -2,6 +2,7 @@ const express = require('express');
 const DeveloperControllers = require('../../controllers/DeveloperControlles');
 const GithubControllers = require('../../controllers/GitHubController');
 const RepositoryController = require ('../../controllers/RepositoryController');
+const YoutubeController = require('../../controllers/YoutubeController')
 
 const createDb = require('../../controllers/WriteDb');
 
@@ -12,6 +13,7 @@ const router = express.Router();
 router
     .get('/JSON', createDb.writeDb)
     .get('/developers/update/github-users/', GithubControllers.updateGitInfo)
+    .get('/youtube/update', YoutubeController.updateYoutubeInfo)
 
     //CONSULTAS DEVELOPERS
     .get('/developers', DeveloperControllers.getDevelopers)

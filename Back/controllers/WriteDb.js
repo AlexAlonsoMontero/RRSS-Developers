@@ -2,6 +2,7 @@
 const mongoose = require('mongoose');
 const Developer = require('../models/Developer');
 const GitHub = require('../models/GitHub');
+const Youtube  = require('../models/Youtube');
 const dataFile =  require('../db/json/developers.json');
 
 
@@ -9,7 +10,7 @@ const writeDb =async(request,response)=>{
     try {
         
         for ( data of dataFile){
-            const {developerJSON, gitHubJSON}= data;
+            const {developerJSON, gitHubJSON, youtubeJSON}= data;
             const developer = new Developer ({
                 ...developerJSON
             });
@@ -23,6 +24,12 @@ const writeDb =async(request,response)=>{
 
             developer.gitHub = gitHub._id
             await  developer.save();
+
+            const youtube = new Youtube({
+                ...youtubeJSON,
+                developer: developer._id
+            })
+            await youtube.save();
         }
         response
             .status(200)

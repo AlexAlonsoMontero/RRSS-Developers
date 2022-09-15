@@ -4,6 +4,9 @@
     },
     "gitHubJSON": {
       "gitUser": "MoureDev"
+    },
+    "youtubeJSON": {
+      "url_code": "MoureDevApps"
     }
 
   }, {
@@ -12,6 +15,9 @@
     },
     "gitHubJSON": {
       "gitUser": "midudev"
+    },
+    "youtubeJSON": {
+      "url_code": "midudev"
     }
 
   },{
@@ -20,6 +26,9 @@
     },
     "gitHubJSON": {
       "gitUser": "carlosazaustre"
+    },
+    "youtubeJSON": {
+      "url_code": "CarlosAzaustre"
     }
   
   }
