@@ -1,10 +1,10 @@
 const gitApi = require('../api/gitApi');
 const Github = require('../models/GitHub');
-
-
+const Repository = require('../models/Repository');
+const UpdateDate = require('./UpdateDate');
 
 //UPDATE CON API EXTERNA
-const updateUserDetails = async (gitUSer) => {
+const updateUserDetails = async () => {
     try {
         const gitHubs = await Github.find();
         for (git of gitHubs) {
@@ -14,32 +14,37 @@ const updateUserDetails = async (gitUSer) => {
                 ...details
             }
             await Github.findByIdAndUpdate(git._id, git)
-            console.log(git)
         }
-
+        await UpdateDate.UpdateDate();
         return gitHubs
     } catch (error) {
         throw {
-            status: 500,
-            message: "No se ha podido actualizar bd detalles de usuario de Github"
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido actualizar bd detalles de usuario de Github"
         }
     }
 }
 
-const updateUserRepos = async () => {
+const updateReposInfo = async () => {
     try {
         const gitHubs = await Github.find();
-        for (git of gitHubs) {
-            const repos = await gitApi.getGitReposByUser(git.gitUser);
-            git.respositories = repos;
-            git = await Github.findByIdAndUpdate(git._id, git)
-
+        let remoteRepo = []
+        for (git of gitHubs){
+            remoteRepos = await gitApi.getGitReposByUser(git.gitUser);
+            remoteRepos.map(repo  => {
+                repo.gitHub = git._id
+                return repo
+            })
+            await Repository.deleteMany({})
+            await Repository.insertMany(remoteRepos)
+            remoteRepo.push(remoteRepos);
         }
-        return gitHubs
+        await UpdateDate.UpdateDate();
+        return remoteRepos
     } catch (error) {
         throw {
-            status: 500,
-            message: "No se ha podido actualizar bd repositories de usuario de Github"
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido actualizar bd detalles de usuario de Github"
         }
     }
 }
@@ -48,6 +53,5 @@ const updateUserRepos = async () => {
 /********************************** */
 module.exports = {
     updateUserDetails,
-    updateUserRepos
-
+    updateReposInfo,
 }

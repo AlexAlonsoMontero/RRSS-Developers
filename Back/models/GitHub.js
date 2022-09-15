@@ -11,14 +11,7 @@ const gitHubSchema = Schema({
     developer: {
         type: Schema.Types.ObjectId,
         ref: 'Developer'
-    },
-    respositories: [{
-        name: String,
-        html_url: String,
-        description: String,
-        language: String,
-    }]
-
+    }
 
 })
 

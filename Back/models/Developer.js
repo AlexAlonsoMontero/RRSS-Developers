@@ -14,7 +14,6 @@ const developerSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: 'GitHub'
     }
-    
 })
 
 

@@ -1,22 +1,46 @@
 const DeveloperServices = require('../services/DeveloperServices');
 
-const getDevelopers = async(request,response)=>{
+const getDevelopersBasicInfo = async (request, response) => {
+    try {
+        const developers = await DeveloperServices.getDevelopersBasicInfo()
+        response
+            .status(200)
+            .send({
+                data: {
+                    info: "Developers guardados",
+                    data: developers
+                }
+            })
+    } catch (error) {
+        response
+            .status(error?.code || 500)
+            .send({
+                status: "FAILED",
+                data: {
+                    status: error?.code || error?.status || 500,
+                    info: error.message
+                }
+            })
+    }
+}
+
+const getDevelopers = async (request, response) => {
     try {
         const developers = await DeveloperServices.getDevelopers();
         response
             .status(200)
             .send({
-                data:{
+                data: {
                     info: "Developers guardados",
                     data: developers
-                } 
+                }
             })
     } catch (error) {
         response
-            .status(error?.code  || 500)
+            .status(error?.code || 500)
             .send({
                 status: "FAILED",
-                data:{
+                data: {
                     status: error?.code || error?.status || 500,
                     info: error.message
                 }
@@ -26,6 +50,7 @@ const getDevelopers = async(request,response)=>{
 
 }
 
-module.exports ={
-    getDevelopers
+module.exports = {
+    getDevelopers,
+    getDevelopersBasicInfo
 }
