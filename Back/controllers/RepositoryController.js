@@ -58,7 +58,6 @@ const getReposByLanguage = async (request, response) => {
 
 const searchRepos = async (request, response)=>{
     try {
-        console.log()
         if(request.query.language){
             request.query.language = LanguageSelector(request.query.language);
         }

@@ -1,10 +1,11 @@
 const GitHubServices = require('../services/GitHubServices');
+const RepositoriesServices = require('../services/RepositoryServices')
 
 //UPDATE DE TODOS LOS DEVELOPERS DE LA BASE DE DATOS PARA LA INFO DE GITHUB
 const updateGitInfo = async(request,response)=>{
     try {
         const updateDetails = await GitHubServices.updateUserDetails();
-        const updateRepos = await GitHubServices.updateReposInfo();
+        const updateRepos = await RepositoriesServices.updateReposInfo();
         response.send({
             status: "OK",
             data:{

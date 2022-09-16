@@ -1,5 +1,8 @@
 const { NotFoundInBDError } = require('../errors/DBError')
 const Repository = require('../models/Repository');
+const Github = require('../models/GitHub');
+const gitApi = require('../api/gitApi');
+const UpdateDate = require('./UpdateDate')
 
 //CONSUMO BASE DE DATOS INTERNA
 const getAllRepositories = async () => {
@@ -23,7 +26,6 @@ const getRepoByParam = async(params = {})=>{
         //     path: "gitHub",
         //     match: { "gitHub.gitUser": "carlosazaustre" }
         // })
-        console.log(params)
         const repos = await Repository.find(params).populate('gitHub', 'gitUser')
         if (repos.length === 0) throw new NotFoundInBDError('repositories')
         return repos
@@ -37,9 +39,33 @@ const getRepoByParam = async(params = {})=>{
     }
 }
 
-
+//OPERACIONES CON API EXTERNA
+const updateReposInfo = async () => {
+    try {
+        const gitHubs = await Github.find();
+        let remoteRepo = []
+        for (git of gitHubs){
+            remoteRepos = await gitApi.getGitReposByUser(git.gitUser);
+            remoteRepos.map(repo  => {
+                repo.gitHub = git._id
+                return repo
+            })
+            await Repository.deleteMany({})
+            await Repository.insertMany(remoteRepos)
+            remoteRepo.push(remoteRepos);
+        }
+        await UpdateDate.UpdateDate();
+        return remoteRepos
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido actualizar bd detalles de usuario de Github"
+        }
+    }
+}
 
 module.exports = {
     getAllRepositories,
-    getRepoByParam
+    getRepoByParam,
+    updateReposInfo
 }
