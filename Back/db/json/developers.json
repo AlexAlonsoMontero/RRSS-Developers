@@ -7,6 +7,8 @@
     },
     "youtubeJSON": {
       "url_code": "MoureDevApps"
+    },"twitterJSON":{
+      "username":"mouredev"
     }
 
   }, {
@@ -18,6 +20,8 @@
     },
     "youtubeJSON": {
       "url_code": "midudev"
+    },"twitterJSON":{
+      "username":"midudev"
     }
 
   },{
@@ -29,6 +33,8 @@
     },
     "youtubeJSON": {
       "url_code": "CarlosAzaustre"
+    },"twitterJSON":{
+      "username":"carlosazaustre"
     }
   
   }

@@ -13,6 +13,9 @@ const developerSchema = Schema({
     gitHub:{
         type: Schema.Types.ObjectId,
         ref: 'GitHub'
+    },twitter:{
+        type: Schema.Types.ObjectId,
+        ref: 'Twitter'
     }
 })
 
