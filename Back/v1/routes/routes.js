@@ -21,12 +21,22 @@ router
     .get('/developers', DeveloperControllers.getDevelopers)
     .get('/developers/info', DeveloperControllers.getDevelopersBasicInfo)
 
-    //CONSULTAS REPOSITORIOS
-    .get('/repositories', RepositoryController.getAllRepos)
-    .get('/repositories/gitHub/:gitHubId', RepositoryController.getReposByDeveloper)
-    .get('/repositories/language/:language', RepositoryController.getReposByLanguage)
-    .get('/repositories/search', RepositoryController.searchRepos)
+    //CONSULTAS GITHUB
+    .get('/developers/git-hub', GithubControllers.getGitInfo )
 
+    //CONSULTAS REPOSITORIOS
+    .get('/developers/git-hub/repositories', RepositoryController.getAllRepos)
+    .get('/developers/git-hub/respositories/:gitHubId', RepositoryController.getReposByDeveloper)
+    .get('/developers/git-hub/repositories/language/:language', RepositoryController.getReposByLanguage)
+    .get('/developers/git-hub/repositories/search', RepositoryController.searchText)
+
+    //CONSULTAS YOUTUBE
+    .get('/developers/youtube/list-videos', YoutubeController.getListAndVideos)
+    .get('/developers/youtube/list-videos/:developerId', YoutubeController.getListAndVideosByDeveloper)
+    .get('/developers/youtube/search/', YoutubeController.searchText)
+    
+    //CONSULTAS TWITTER
+    .get('/developers/twitter/:twitterId', TwitterController.getTwitterById)
 
 
 module.exports = router;

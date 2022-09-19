@@ -1,5 +1,26 @@
 const TwitterServices = require('../services/TwitterServices');
+//BASE DE DATOS
 
+const getTwitterById = async(request, response) => {
+    try {
+        const tweets = await TwitterServices.getTweetsById(request.params.twitterId)
+        response
+            .status(200)
+            .send({
+                status: "OK",
+                data: tweets
+            })
+    } catch (error) {
+        response
+            .status( error?.code || 500)
+            .send( {
+                status: "FAILED",
+                dat:error?.message || 'No se ha podido localizar Twitter'
+            })
+    }
+}
+
+//API EXTERNA
 const updateTwitter = async(request, response)=>{
     try {
             await TwitterServices.updateUser();
@@ -12,10 +33,14 @@ const updateTwitter = async(request, response)=>{
     } catch (error) {
         response
             .status( error?.code || 500)
-            .send( error?.message || 'No se ha podido actualizar los datos de twitter')
+            .send( {
+                status: "FAILED",
+                dat:error?.message || 'No se ha podido actualizar los datos de Twitter'
+            })
     }
 }
 
 module.exports = {
-    updateTwitter
+    updateTwitter,
+    getTwitterById
 }

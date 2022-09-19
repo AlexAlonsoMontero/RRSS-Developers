@@ -5,8 +5,10 @@ const Repository = require('../models/Repository');
 
 const getDevelopersBasicInfo = async()=>{
     try {
-        const developers = await Developer.find().populate(
-            'gitHub','gitUser avatar_url public_repos')
+        const developers = await Developer.find()
+            .populate('gitHub','gitUser avatar_url public_repos followers')
+            .populate('youtube', 'title description thumbnails url_code')
+            .populate('twitter', 'username followers description')
         return developers
     } catch (error) {
         console.error(error);
@@ -20,7 +22,10 @@ const getDevelopersBasicInfo = async()=>{
 
 const getDevelopers =async()=>{
     try {
-        const developers = await Developer.find().populate('gitHub');
+        const developers = await Developer.find()
+        .populate('gitHub')
+        .populate('youtube')
+        .populate('twitter')
 
         if(developers.length ===0) throw new NotFoundInBDError('developers')
         return developers

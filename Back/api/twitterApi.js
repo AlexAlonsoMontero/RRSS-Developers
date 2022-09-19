@@ -5,12 +5,12 @@ const userTweetsUrl = 'https://api.twitter.com/2/tweets/search/recent?query=from
 
 const getUserData = async (username) => {
     try {
-        const  { data }   = await axios.get(`${userDetailsUrl}${username}?user.fields=description,id,name,public_metrics,username`, {
+        const { data } = await axios.get(`${userDetailsUrl}${username}?user.fields=description,id,name,public_metrics,username`, {
             headers: {
                 'Authorization': 'Bearer ' + process.env.TWITTER_TOKEN
             }
         });
-        
+
         return {
             username: data.data.username,
             description: data.data.description,
@@ -26,16 +26,16 @@ const getUserData = async (username) => {
     }
 }
 
-const getTweetsText = async(username) =>{
+const getTweetsText = async (username) => {
     try {
-        const  {data}    = await axios.get(`${userTweetsUrl}${username}`, {
+        const { data } = await axios.get(`${userTweetsUrl}${username}`, {
             headers: {
                 'Authorization': 'Bearer ' + process.env.TWITTER_TOKEN
             }
         });
-        
-        return  data.data.filter(item=>item.text)
-            
+
+        return data.data.filter(item => item.text)
+
     } catch (error) {
         console.log(error)
         throw {

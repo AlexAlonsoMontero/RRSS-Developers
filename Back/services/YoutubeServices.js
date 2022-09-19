@@ -3,6 +3,70 @@ const YoutubeApi = require('../api/youtubeApi');
 const UpdateDate = require('./UpdateDate');
 const Lists = require('../models/Lists');
 const Videos = require('../models/Video');
+const { request } = require('express');
+
+
+//CONSULTAS BASE DE DATOS
+
+const getAllListAndVideos = async () => {
+    try {
+        const videos = await Videos.find();
+        const list = await Lists.find();
+        return {
+            videos,
+            list
+        }
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"
+        }
+    }
+}
+
+
+
+const searchText = async (params) => {
+    try {
+        const result = []
+        if (params.video) {
+            const videos = await Videos.find({ $text: { $search: params.video, $caseSensitive: false, $language: "es" } });
+            if (videos.length > 0) result.push({ videos: videos });
+        }
+        if (params.list) {
+            const lists = await Lists.find({ $text: { $search: params.video, $caseSensitive: false, $language: "es" } })
+            if (lists.length >0) result.push({lists: lists});
+        }
+
+        if (result.length === 0) throw new Error("No se ha localizado resultados en Youtube para la búsqueda de texto")
+
+        return result
+
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"
+        }
+    }
+}
+
+
+const getListAndVideosById = async (developer) => {
+    try {
+
+        const youtube = await Youtube.findOne({ developer: developer });
+
+
+        const videos = await Videos.find({ youtube: youtube._id });
+        const lists = await Lists.find({ youtube: youtube._id });
+        return { lists, videos }
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"
+        }
+    }
+}
 
 const updateChannelDetails = async () => {
     try {
@@ -19,7 +83,6 @@ const updateChannelDetails = async () => {
         return youtubes
 
     } catch (error) {
-        console.error(error)
         throw {
             status: error?.code || 500,
             message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"
@@ -27,6 +90,8 @@ const updateChannelDetails = async () => {
     }
 }
 
+
+//CONSULTAS API EXTERNAS
 const updateListDetails = async () => {
     try {
         const youtubes = await Youtube.find();
@@ -38,7 +103,7 @@ const updateListDetails = async () => {
                 list.youtube = youtube._id;
                 return list;
             })
-            await Lists.deleteMany({});
+            await Lists.deleteMany({ youtube: youtube._id });
             await Lists.insertMany(remoteLists);
             remoteList.push(remoteLists)
         }
@@ -57,16 +122,15 @@ const updateListDetails = async () => {
 const updateVideoDetails = async () => {
     try {
         const youtubes = await Youtube.find();
-        console.log(youtubes)
         let remoteVideo = [];
         for (youtube of youtubes) {
-            if(! youtube.channelId ) throw Error("No existe channel Id")
+            if (!youtube.channelId) throw Error("No existe channel Id")
             remoteVideos = await YoutubeApi.getVideoDetails(youtube.channelId);
             remoteVideos = remoteVideos.map(list => {
                 list.youtube = youtube._id;
                 return list;
             })
-            await Videos.deleteMany({});
+            await Videos.deleteMany({ youtube: youtube._id });
             await Videos.insertMany(remoteVideos);
             remoteVideo.push(remoteVideos)
         }
@@ -85,5 +149,8 @@ const updateVideoDetails = async () => {
 module.exports = {
     updateChannelDetails,
     updateListDetails,
-    updateVideoDetails
+    updateVideoDetails,
+    getAllListAndVideos,
+    getListAndVideosById,
+    searchText
 }

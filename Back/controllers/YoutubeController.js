@@ -1,6 +1,72 @@
 const YoutubeService = require('../services/YoutubeServices');
 
 //UPDATE  BASE DE DATOS PARA LA INFO DE YOUTUBE
+
+const getListAndVideos = async(request, response) =>{
+    try {
+        const listVideos = await YoutubeService.getAllListAndVideos()
+        response
+            .status(200)
+            .send({
+                status: "OK",
+                data:{
+                    listVideos
+                }
+            })
+    } catch (error) {
+        response
+            .status(error?.status || 500)
+            .send({
+                status:"FAILED",
+                message: error?.message || "No seha podido localizar datos de videos y listas en Base de datos",
+            })
+    }
+
+}
+
+const getListAndVideosByDeveloper = async (request, response) =>{
+    try {
+        const videosAndList = await YoutubeService.getListAndVideosById( request.params.developerId );
+        response
+            .status(200)
+            .send({
+                status: "OK",
+                data: {
+                    videosAndList
+                }
+            })
+    } catch (error) {
+        response
+            .status(error?.status || 500)
+            .send({
+                status:"FAILED",
+                message: error?.message || "No seha podido localizar datos de videos y listas en Base de datos",
+            })
+    }
+}
+
+const searchText = async( request, response ) => {
+    try {
+        console.log(request.params)
+        const data = await YoutubeService.searchText( request.query );
+        response
+            .status(200)
+            .send({
+                status: "OK",
+                data
+            })
+    } catch (error) {
+        response
+            .status(error?.status || 500)
+            .send({
+                status:"FAILED",
+                message: error?.message || "No seha podido localizar datos de videos y listas en Base de datos",
+            })
+    }
+}
+
+
+//UPDATE BASE DE DATOS CON API EXTERNA
 const updateYoutubeInfo = async (request, response) => {
     try {
         const channelDetails = await YoutubeService.updateChannelDetails();
@@ -17,16 +83,18 @@ const updateYoutubeInfo = async (request, response) => {
                 }
             })
     } catch (error) {
-        console.error(error);
         response
             .status(error?.status || 500)
             .send({
+                status:"FAILED",
                 message: error?.message || "No seha podido actualizar datos de Youtube con API externa",
-                data: error?.data
             })
     }
 }
 
 module.exports = {
-    updateYoutubeInfo
+    updateYoutubeInfo,
+    getListAndVideos,
+    getListAndVideosByDeveloper,
+    searchText
 }

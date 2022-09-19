@@ -10,7 +10,6 @@ const languageSelector = (language) => {
             return "Python"
         default:
             return language
-            break;
 
     }
 }

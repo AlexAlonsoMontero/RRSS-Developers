@@ -1,6 +1,6 @@
 const RespositoryServices = require('../services/RepositoryServices');
-const LanguageSelector  = require('../helpers/LanguageSelector');
-
+const LanguageSelector = require('../helpers/LanguageSelector');
+//CONSULTAS BASE DE DATSO
 const getAllRepos = async (request, response) => {
     try {
         const repos = await RespositoryServices.getAllRepositories();
@@ -22,7 +22,7 @@ const getAllRepos = async (request, response) => {
 
 const getReposByDeveloper = async (request, response) => {
     try {
-        const gitHubId = {gitHub: request.params.gitHubId}
+        const gitHubId = { gitHub: request.params.gitHubId }
         const repos = await RespositoryServices.getRepoByParam(gitHubId)
         response
             .status(200)
@@ -34,14 +34,14 @@ const getReposByDeveloper = async (request, response) => {
         console.error(error);
         response
             .status(error?.status || 500)
-            .send(error?.message || "No se ha podido realizar la busqueda de repositorios por repository")
+            .send(error?.message || "No se ha podido realizar la busqueda de repositorios por developer")
     }
 }
 
 const getReposByLanguage = async (request, response) => {
     try {
-        language = LanguageSelector(request.params.language)
-        const repos = await RespositoryServices.getRepoByParam({language:language});
+        language = LanguageSelector(request.params.dev_language)
+        const repos = await RespositoryServices.getRepoByParam({ dev_language: language });
         response
             .status(200)
             .send({
@@ -51,36 +51,37 @@ const getReposByLanguage = async (request, response) => {
     } catch (error) {
         console.error(error);
         response
-            .status(error?.status || 500)
-            .send(error?.message || "No se ha podido realizar la busqueda de repositorios por repository")
+            .status(error?.code || 500)
+            .send({
+                status: "FAILED",
+                data: error?.message || "No se ha podido realizar la busqueda de repositorios por lenguage"
+            })
     }
 }
 
-const searchRepos = async (request, response)=>{
+const searchText =async (request, response) => {
     try {
-        if(request.query.language){
-            request.query.language = LanguageSelector(request.query.language);
-        }
-        const repos = await RespositoryServices.getRepoByParam(request.query);
-        response
+        
+        const data =await  RespositoryServices.searchText(request.query.repo)
+        response    
             .status(200)
             .send({
                 status: "OK",
-                data: repos
+                data
             })
     } catch (error) {
-        console.error(error);
         response
-            .status(error?.status || 500)
-            .send(error?.message || "No se ha podido realizar la busqueda de repositorios por repository")
+            .status(error?.code || 500)
+            .send({
+                status: "FAILED",
+                data: error?.message || "No se ha podido realizar la busqueda de repositorios por texto"
+            })
     }
-    
 }
-
 
 module.exports = {
     getReposByDeveloper,
     getAllRepos,
     getReposByLanguage,
-    searchRepos
+    searchText
 }

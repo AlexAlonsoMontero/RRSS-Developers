@@ -1,7 +1,21 @@
 const Twitter = require('../models/Twitter');
 const twitterApi = require('../api/twitterApi');
 
+//CONSULTA BASE DE DATOS
 
+const getTweetsById = async (twitterId) =>{
+    try {
+        const tweets  = await Twitter.findById(twitterId);
+        return tweets
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido actualizar bd detalles de usuario de Twitter"
+        }
+    }
+}
+
+//ACTUALIZACIÓIN API EXTERNA
 const updateUser = async()=>{
     try {
         const twitters = await Twitter.find();
@@ -43,5 +57,6 @@ const updateTweets =async()=>{
 
 module.exports = {
     updateUser,
-    updateTweets
+    updateTweets,
+    getTweetsById
 }

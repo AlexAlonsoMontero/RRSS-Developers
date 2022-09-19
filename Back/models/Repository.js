@@ -6,7 +6,7 @@ const RespositorySchema = Schema({
     name: String,
     html_url: String,
     description: String,
-    language: String,
+    dev_language: String,
     gitHub: {
         type: Schema.Types.ObjectId,
         ref: 'GitHub'
@@ -14,5 +14,7 @@ const RespositorySchema = Schema({
 
 
 })
+
+
 
 module.exports = model('Repository', RespositorySchema);

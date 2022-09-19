@@ -4,7 +4,8 @@ const { Schema, model } = mongoose;
 const developerSchema = Schema({
     name: {
         type: String,
-        unique: true
+        unique: true,
+        index: true
     },
     update: {
         type: Date,
@@ -16,6 +17,9 @@ const developerSchema = Schema({
     },twitter:{
         type: Schema.Types.ObjectId,
         ref: 'Twitter'
+    },youtube:{
+        type: Schema.Types.ObjectId,
+        ref: 'Youtube'
     }
 })
 

@@ -1,7 +1,20 @@
 const gitApi = require('../api/gitApi');
 const Github = require('../models/GitHub');
-const Repository = require('../models/Repository');
 const UpdateDate = require('./UpdateDate');
+
+//CONSULTAS BASE DE DATOS
+const getGitInfo = async() =>{
+    try {
+        return await Github.find();
+    } catch (error) {
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido localizar bd detalles de usuario de Github en la base de datos"
+        }
+    }
+}
+
+
 
 //UPDATE CON API EXTERNA
 const updateUserDetails = async () => {
@@ -31,5 +44,5 @@ const updateUserDetails = async () => {
 /********************************** */
 module.exports = {
     updateUserDetails,
-    
+    getGitInfo
 }

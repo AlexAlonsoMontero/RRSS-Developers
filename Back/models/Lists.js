@@ -11,4 +11,7 @@ const ListSchema = Schema({
     }
 })
 
+ListSchema.index({title: 'text', description: 'text'});
+
+
 module.exports = model('List',ListSchema);

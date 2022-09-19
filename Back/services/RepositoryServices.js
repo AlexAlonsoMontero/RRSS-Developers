@@ -20,18 +20,34 @@ const getAllRepositories = async () => {
     }
 }
 
+
+
 const getRepoByParam = async(params = {})=>{
     try {
         // const repos = await Repository.find().populate({
         //     path: "gitHub",
         //     match: { "gitHub.gitUser": "carlosazaustre" }
         // })
+        console.log(params)
         const repos = await Repository.find(params).populate('gitHub', 'gitUser')
         if (repos.length === 0) throw new NotFoundInBDError('repositories')
         return repos
 
     } catch (error) {
-        console.error(error)
+        throw {
+            status: error?.code || 500,
+            message: error?.message || "No se ha podido localizar los repositorios"
+        }
+    }
+}
+
+
+const searchText = async(params) =>{
+    try {
+        const repositories = await Repository.find({$text:{$search:params, $caseSensitive:false, $language:"es"}})
+        if (repositories.length ===0) throw new Error("No hay resultados para la búsqueda de texto en el respositorio");
+        return repositories
+    } catch (error) {
         throw {
             status: error?.code || 500,
             message: error?.message || "No se ha podido localizar los repositorios"
@@ -45,12 +61,15 @@ const updateReposInfo = async () => {
         const gitHubs = await Github.find();
         let remoteRepo = []
         for (git of gitHubs){
+            console.log(git.language)
             remoteRepos = await gitApi.getGitReposByUser(git.gitUser);
             remoteRepos.map(repo  => {
                 repo.gitHub = git._id
+                repo.dev_language = repo.language
                 return repo
             })
-            await Repository.deleteMany({})
+            await Repository.deleteMany()
+            console.log(remoteRepos)
             await Repository.insertMany(remoteRepos)
             remoteRepo.push(remoteRepos);
         }
@@ -67,5 +86,6 @@ const updateReposInfo = async () => {
 module.exports = {
     getAllRepositories,
     getRepoByParam,
-    updateReposInfo
+    updateReposInfo,
+    searchText
 }
