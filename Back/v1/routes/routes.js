@@ -6,12 +6,20 @@ const YoutubeController = require('../../controllers/YoutubeController');
 const TwitterController = require('../../controllers/TwitterController')
 
 const createDb = require('../../controllers/WriteDb');
+const { response } = require('express');
 
 const router = express.Router();
 
 //RUTAS PARA PREPARAR LA BASE DE DATOS:
 //Crea la base de datos y cargar la info de api externa
 router
+    .get('/',function(request,response){
+        response
+            .status(200)
+            .send({
+                fuciona: 'funciona'
+            })
+    })
     .get('/JSON', createDb.writeDb)
     .get('/developers/update/github-users/', GithubControllers.updateGitInfo)
     .get('/youtube/update', YoutubeController.updateYoutubeInfo)

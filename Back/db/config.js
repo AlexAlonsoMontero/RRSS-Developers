@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
+// require ('dotenv').config();
+
+
 
 const connectionString = process.env.NODE_ENV === 'test'
             ? process.env.DB_URI_TEST
             : process.env.DB_URI
-
 
 const dbConnection= async()=>{
     try {
@@ -18,6 +20,7 @@ const dbConnection= async()=>{
 
         console.log('DB Online')
     } catch (error) {
+        console.error(error)
         throw new Error('Error al incializar base de datos')
 
     }
