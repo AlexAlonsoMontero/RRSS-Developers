@@ -7,12 +7,12 @@ const getAllRepos = async (request, response) => {
         response
             .status(200)
             .send({
+                info: "Repositorios almacenados en BD",
                 status: "OK",
                 data: repos
             })
     } catch (error) {
 
-        console.error(error);
         response
             .status(error?.status || 500)
             .send(error?.message || "No se ha podido realizar la busqueda de repositorios por repository")
@@ -27,11 +27,11 @@ const getReposByDeveloper = async (request, response) => {
         response
             .status(200)
             .send({
+                info: "Repos por developer",
                 status: "OK",
                 data: repos
             })
     } catch (error) {
-        console.error(error);
         response
             .status(error?.status || 500)
             .send(error?.message || "No se ha podido realizar la busqueda de repositorios por developer")
@@ -46,10 +46,10 @@ const getReposByLanguage = async (request, response) => {
             .status(200)
             .send({
                 status: "OK",
+                info: "Repositorios por lenguage",
                 data: repos
             })
     } catch (error) {
-        console.error(error);
         response
             .status(error?.code || 500)
             .send({
@@ -59,13 +59,14 @@ const getReposByLanguage = async (request, response) => {
     }
 }
 
-const searchText =async (request, response) => {
+const searchText = async (request, response) => {
     try {
-        
-        const data =await  RespositoryServices.searchText(request.query.repo)
-        response    
+
+        const data = await RespositoryServices.searchText(request.query.repo)
+        response
             .status(200)
             .send({
+                info: "Busqueda en git por texto",
                 status: "OK",
                 data
             })

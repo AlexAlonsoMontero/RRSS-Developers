@@ -110,7 +110,6 @@ const updateListDetails = async () => {
         await UpdateDate.UpdateDate();
         return remoteList
     } catch (error) {
-        // console.error(error)
         throw {
             status: error.request?.status || 500,
             message: error?.message || "No se ha podido localizar los datos las listas en Youtube",
@@ -137,7 +136,6 @@ const updateVideoDetails = async () => {
         await UpdateDate.UpdateDate();
         return remoteVideo
     } catch (error) {
-        console.error(error)
         throw {
             status: error?.code || 500,
             message: error?.message || "No se ha podido localizar los datos las listas en Youtube"

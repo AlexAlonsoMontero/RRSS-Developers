@@ -8,6 +8,7 @@ const getTwitterById = async(request, response) => {
             .status(200)
             .send({
                 status: "OK",
+                info: "Tweets por id",
                 data: tweets
             })
     } catch (error) {
@@ -28,7 +29,11 @@ const updateTwitter = async(request, response)=>{
             response
                 .status(200)
                 .send({
-                    tweetUserInfo : tweetsText
+                    status: 'OK',
+                    info: "Twiter actualizado correctamente",
+                    data:{
+                        twitters: tweetsText
+                    }
                 })
     } catch (error) {
         response

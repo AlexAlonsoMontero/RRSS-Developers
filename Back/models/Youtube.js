@@ -2,10 +2,7 @@ const { Schema, model  }  = require('mongoose');
 
 const YoutubeSchema = Schema({
     url_code: String,
-    channelId: {
-        type: String,
-        unique: true
-    },
+    channelId: String,
     title: String,
     description: String,
     thumbnails: String,
@@ -14,6 +11,8 @@ const YoutubeSchema = Schema({
         ref: 'Developer'
     }
 })
+
+YoutubeSchema.index({ title: 'text', description: 'text'});
 
 
 module.exports = model('Youtube', YoutubeSchema)

@@ -12,7 +12,6 @@ const getAllRepositories = async () => {
         return repos
 
     } catch (error) {
-        console.error(error)
         throw {
             status: error?.code || 500,
             message: error?.message || "No se ha podido localizar los repositorios por lenguaje"
@@ -28,7 +27,6 @@ const getRepoByParam = async(params = {})=>{
         //     path: "gitHub",
         //     match: { "gitHub.gitUser": "carlosazaustre" }
         // })
-        console.log(params)
         const repos = await Repository.find(params).populate('gitHub', 'gitUser')
         if (repos.length === 0) throw new NotFoundInBDError('repositories')
         return repos
@@ -61,20 +59,20 @@ const updateReposInfo = async () => {
         const gitHubs = await Github.find();
         let remoteRepo = []
         for (git of gitHubs){
-            console.log(git.language)
             remoteRepos = await gitApi.getGitReposByUser(git.gitUser);
+            
             remoteRepos.map(repo  => {
                 repo.gitHub = git._id
                 repo.dev_language = repo.language
+
                 return repo
             })
-            await Repository.deleteMany()
-            console.log(remoteRepos)
-            await Repository.insertMany(remoteRepos)
+            await Repository.deleteMany({gitHub : git._id})
+            await Repository.create(remoteRepos)
             remoteRepo.push(remoteRepos);
         }
         await UpdateDate.UpdateDate();
-        return remoteRepos
+        return remoteRepo
     } catch (error) {
         throw {
             status: error?.code || 500,

@@ -11,7 +11,6 @@ const getDevelopersBasicInfo = async()=>{
             .populate('twitter', 'username followers description')
         return developers
     } catch (error) {
-        console.error(error);
         throw{
             status: error?.code || 500,
             message: error?.message || "No ha realizado la busqueda de información básica de developers",
@@ -30,7 +29,6 @@ const getDevelopers =async()=>{
         if(developers.length ===0) throw new NotFoundInBDError('developers')
         return developers
     } catch (error) {
-        console.error(error);
         throw{
             status: error?.code || 500,
             message: error?.message || "No se ha podido crear coleccioens en BD",

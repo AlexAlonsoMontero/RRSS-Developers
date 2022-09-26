@@ -13,15 +13,8 @@ const router = express.Router();
 //RUTAS PARA PREPARAR LA BASE DE DATOS:
 //Crea la base de datos y cargar la info de api externa
 router
-    .get('/',function(request,response){
-        response
-            .status(200)
-            .send({
-                fuciona: 'funciona'
-            })
-    })
     .get('/JSON', createDb.writeDb)
-    .get('/developers/update/github-users/', GithubControllers.updateGitInfo)
+    .get('/git-hub/update', GithubControllers.updateGitInfo)
     .get('/youtube/update', YoutubeController.updateYoutubeInfo)
     .get('/twitter/update', TwitterController.updateTwitter)
 
@@ -31,17 +24,15 @@ router
 
     //CONSULTAS GITHUB
     .get('/developers/git-hub', GithubControllers.getGitInfo )
-
-    //CONSULTAS REPOSITORIOS
     .get('/developers/git-hub/repositories', RepositoryController.getAllRepos)
-    .get('/developers/git-hub/respositories/:gitHubId', RepositoryController.getReposByDeveloper)
+    .get('/developers/git-hub/repositories/:gitHubId', RepositoryController.getReposByDeveloper)
     .get('/developers/git-hub/repositories/language/:language', RepositoryController.getReposByLanguage)
-    .get('/developers/git-hub/repositories/search', RepositoryController.searchText)
+    .get('/developers/search/git-hub/repositories/', RepositoryController.searchText)
 
     //CONSULTAS YOUTUBE
     .get('/developers/youtube/list-videos', YoutubeController.getListAndVideos)
     .get('/developers/youtube/list-videos/:developerId', YoutubeController.getListAndVideosByDeveloper)
-    .get('/developers/youtube/search/', YoutubeController.searchText)
+    .get('/developers/search/youtube/', YoutubeController.searchText)
     
     //CONSULTAS TWITTER
     .get('/developers/twitter/:twitterId', TwitterController.getTwitterById)

@@ -17,7 +17,6 @@ const getUserData = async (username) => {
             followers: data.data.public_metrics.followers_count,
         }
     } catch (error) {
-        console.log(error.response.data)
         throw {
             status: error?.code || 500,
             message: error?.message || "No se han podido descargar datos de las listas de la api de Twietter"
@@ -37,7 +36,6 @@ const getTweetsText = async (username) => {
         return data.data.filter(item => item.text)
 
     } catch (error) {
-        console.log(error)
         throw {
             status: error?.code || 500,
             message: error?.message || "No se han podido descargar datos de las listas de la api de Twietter"

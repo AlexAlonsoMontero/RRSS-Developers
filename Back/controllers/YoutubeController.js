@@ -9,6 +9,7 @@ const getListAndVideos = async(request, response) =>{
             .status(200)
             .send({
                 status: "OK",
+                info: "Todos los videeos y listas almacenados",
                 data:{
                     listVideos
                 }
@@ -31,6 +32,7 @@ const getListAndVideosByDeveloper = async (request, response) =>{
             .status(200)
             .send({
                 status: "OK",
+                info: "Listas y vídeos por id de developer",
                 data: {
                     videosAndList
                 }
@@ -47,11 +49,11 @@ const getListAndVideosByDeveloper = async (request, response) =>{
 
 const searchText = async( request, response ) => {
     try {
-        console.log(request.params)
         const data = await YoutubeService.searchText( request.query );
         response
             .status(200)
             .send({
+                info: "Búsqueda de vídeos por texto",
                 status: "OK",
                 data
             })
@@ -76,7 +78,9 @@ const updateYoutubeInfo = async (request, response) => {
             .status(200)
             .send({
                 status: "OK",
+                info: "Actualizados datos de youtube: Canales , listas y vídeos",
                 data: {
+                
                     channelDetails: channelDetails,
                     lists: lists,
                     videos: videos

@@ -6,8 +6,9 @@ const getDevelopersBasicInfo = async (request, response) => {
         response
             .status(200)
             .send({
+                info: "Información de developers",
+                status: "OK",
                 data: {
-                    info: "Developers guardados",
                     data: developers
                 }
             })
@@ -30,8 +31,9 @@ const getDevelopers = async (request, response) => {
         response
             .status(200)
             .send({
+                info: "Información de developers",
+                status: "OK",
                 data: {
-                    info: "Developers guardados",
                     data: developers
                 }
             })

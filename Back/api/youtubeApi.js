@@ -17,7 +17,6 @@ const getChannelDetails = async (url_code) => {
         }
 
     } catch (error) {
-        console.error(error);
         throw {
             status: error?.code || 500,
             message: error?.message || "No se han podido descargar datos del canal de la api de Youtube"
@@ -43,7 +42,6 @@ const getListDetails = async (channelId) => {
 
         return listsInfo
     } catch (error) {
-        console.error(error);
         throw {
             status: error?.code || 500,
             message: error?.message || "No se han podido descargar datos de las listas de la api de Youtube"
@@ -65,7 +63,6 @@ const getVideoDetails = async (channelId) => {
         })
         return videosInfo
     } catch (error) {
-        console.error(error);
         throw {
             status: error?.code || 500,
             message: error?.message || "No se han podido descargar datos de las videos de la api de Youtube"

@@ -20,7 +20,6 @@ const dbConnection= async()=>{
 
         console.log('DB Online')
     } catch (error) {
-        console.error(error)
         throw new Error('Error al incializar base de datos')
 
     }

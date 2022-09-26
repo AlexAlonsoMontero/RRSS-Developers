@@ -15,6 +15,7 @@ const RespositorySchema = Schema({
 
 })
 
+RespositorySchema.index({description: 'text'});
 
 
 module.exports = model('Repository', RespositorySchema);

@@ -3,7 +3,7 @@ const morgan = require('morgan');
 
 const app = express();
 
-require ('dotenv').config();
+require('dotenv').config();
 const port = process.env.WEB_PORT;
 const host = process.env.WEB_HOST;
 
@@ -16,13 +16,16 @@ app.use(morgan('combined'));
 //Routes
 app.use('/api/v1/', routes);
 
-//pruebas
-const {dbConnection} =require('./db/config')
-dbConnection()
-const server = app.listen(port,host,()=>{
+
+if (process.env.NODE_ENV != 'test') {
+
+    const { dbConnection } = require('./db/config')
+    dbConnection();
+}
+const server = app.listen(port, host, () => {
 
     console.log(`Server runing at http://${host}:${port} \n Enviroment: ${process.env.NODE_ENV}`);
-    
+
 })
 
 module.exports = { app, server }
