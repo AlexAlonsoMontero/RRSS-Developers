@@ -1,5 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
+const { swaggerDocs } = require('./v1/swagger')
 
 const app = express();
 
@@ -23,9 +24,8 @@ if (process.env.NODE_ENV != 'test') {
     dbConnection();
 }
 const server = app.listen(port, host, () => {
-
     console.log(`Server runing at http://${host}:${port} \n Enviroment: ${process.env.NODE_ENV}`);
-
+    swaggerDocs(app, port, host);
 })
 
 module.exports = { app, server }

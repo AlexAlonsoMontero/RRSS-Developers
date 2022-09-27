@@ -11,7 +11,9 @@ const getListAndVideos = async(request, response) =>{
                 status: "OK",
                 info: "Todos los videeos y listas almacenados",
                 data:{
-                    listVideos
+                    videos: listVideos.videos,
+                    lists: listVideos.list
+
                 }
             })
     } catch (error) {
