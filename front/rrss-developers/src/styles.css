@@ -1,0 +1,17 @@
+.root {
+    background-color: black;
+}
+
+#headerContainer {
+    background-image: url("./ui/assets/back-white-develop2.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center;
+    height: 35vh;
+    }
+
+#header-form {
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 15px;
+    max-width: 900px;
+}
