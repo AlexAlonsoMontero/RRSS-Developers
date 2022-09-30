@@ -27,7 +27,7 @@ const getGitInfo = async (request, response) => {
 //UPDATE DE TODOS LOS DEVELOPERS DE LA BASE DE DATOS PARA LA INFO DE GITHUB
 const updateGitInfo = async (request, response) => {
     try {
-        // const updateDetails = await GitHubServices.updateUserDetails();
+        const updateDetails = await GitHubServices.updateUserDetails();
         const updateRepos = await RepositoriesServices.updateReposInfo();
         response
             .status(200)
@@ -35,7 +35,7 @@ const updateGitInfo = async (request, response) => {
                 status: "OK",
                 info: "Actualizados destalles de usuario Github",
                 data: {
-                    // gitUsers: updateDetails,
+                    gitUsers: updateDetails,
                     gitRepos: updateRepos
                 }
             })
