@@ -9,7 +9,7 @@ const getAllRepos = async (request, response) => {
             .send({
                 info: "Repositorios almacenados en BD",
                 status: "OK",
-                data: repos
+                repos
             })
     } catch (error) {
 

@@ -2,8 +2,8 @@ import { Container, Col, Form, Button } from "react-bootstrap"
 function PrincipalHeader() {
   return (
     <header>
-      <Container fluid id="headerContainer" className="d-flex align-items-center justify-content-center shadow-lg">
-        <Container className="d-flex flex-column align-items-center justify-content-center" md="auto" >
+      <Container fluid id="headerContainer" className="d-flex align-items-center justify-content-center ">
+        <Container className="d-flex flex-column align-items-center justify-content-center"  >
           <Col md="auto" id="header-form" className="p-3">
             <h1> RRSS Developers</h1>
             <p>En esta eb podrás consultar de un solo vistazo , o hacer búsquedas en los aportes que nos dejan los mejores influencers de la comunidad developer en Youtube Github y Twitter</p>

@@ -17,6 +17,7 @@ const {Schema, model, models} = require('mongoose');
  *          title: 
  *            type: string
  *            example: Lista de reproduccción  
+ *          
  *          thumbnails: 
  *            type: string
  *            example: http://urldeimagen.com/11.jpg  
@@ -31,6 +32,7 @@ const ListSchema = Schema({
     title: String,
     description: String,
     thumbnails: String,
+    url: String,
     youtube: {
         type: Schema.Types.ObjectId,
         ref: 'Youtube'

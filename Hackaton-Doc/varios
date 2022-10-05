@@ -1,0 +1,266 @@
+DEVELOPERS REVIEW
+Nombre app twitter DeveloperReview
+API KEY EFGWljGy8DzsGa7tN9aHlb2bO
+API SECRET Sx4ZTdH0BjVZcRU69A5TngF7vmniSyFiQXeVqL15JwZyzOappJ
+BEARER TOKEN 
+AAAAAAAAAAAAAAAAAAAAAORmggEAAAAA9hOu7WWDw7WjiY5ZiDHS0c%2F2y%2FM%3DBraPAI1cLR8WktBhIEB53mhCW4TGsRy03kn0o1usscYNeXh5TY
+
+
+ver vídeos por id youtube
+zEBur_vb6xQ
+https://www.youtube.com/watch?v=VIDEOID
+https://www.youtube.com/c/CHANELTITLE
+https://twitter.com/USERNAME
+
+
+
+https://api.github.com/users/AlexAlonsoMontero
+
+https://api.github.com/users/AlexAlonsoMontero/repos
+
+https://api.github.com/users/AlexAlonsoMontero/followers
+
+
+
+db user
+MartilloPilon81
+10@Mostovoi@10
+mongodb+srv://MartilloPilon81:10@Mostovoi@10@cluster0.mg4vqy8.mongodb.net/?retryWrites=true&w=majority
+mongodb+srv://alex:mostovoi@calendarappdb.qkbyytg.mongodb.net/
+sudo systemctl start mongod.service
+
+base de datos testing
+DevelopersTesting
+collection developers
+
+
+
+const videos = await externalYoutubeServices.getiVideosInfo("UCxPD7bsocoAMq8Dj18kmGyQ");
+}
+
+
+    "kind": "youtube#playlistListResponse",
+    "etag": "Z6P6SEN4TatkkaJ8NCmjcLpa9Lc",
+    "nextPageToken": "CAUQAA",
+    "pageInfo": {
+        "totalResults": 32,
+        "resultsPerPage": 5
+    },
+    "items": [
+        {
+            "kind": "youtube#playlist",
+            "etag": "6BvdO6gET6ugiZp53y1SlBPq5dM",
+            "id": "PLV8x_i1fqBw0boUTXBbTNdjjGwGHcTr3T",
+            "snippet": {
+                "publishedAt": "2022-01-23T15:32:42Z",
+                "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+                "title": "💎 WEB3",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/A5SZ6OXKjSw/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/A5SZ6OXKjSw/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/A5SZ6OXKjSw/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/A5SZ6OXKjSw/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/A5SZ6OXKjSw/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "midudev",
+                "localized": {
+                    "title": "💎 WEB3",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "kind": "youtube#playlist",
+            "etag": "tWFQmNWNJcB2aPP2k2ZWH9mlzHk",
+            "id": "PLV8x_i1fqBw2qHkpCmLcd71IdrO90KSNn",
+            "snippet": {
+                "publishedAt": "2021-07-08T15:49:55Z",
+                "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+                "title": "Algolia 🔎",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/eD1CUWs_3_k/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/eD1CUWs_3_k/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/eD1CUWs_3_k/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/eD1CUWs_3_k/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/eD1CUWs_3_k/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "midudev",
+                "localized": {
+                    "title": "Algolia 🔎",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "kind": "youtube#playlist",
+            "etag": "Swiit-9JbDMeZh7HEosjbbj-DwI",
+            "id": "PLV8x_i1fqBw1mWB5XOGRxr2BD5Vwh3Zd5",
+            "snippet": {
+                "publishedAt": "2021-05-29T17:50:23Z",
+                "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+                "title": "🗣️ Reaccionando a vídeos de programación",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/c9-iiVz4Av0/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/c9-iiVz4Av0/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/c9-iiVz4Av0/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/c9-iiVz4Av0/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/c9-iiVz4Av0/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "midudev",
+                "localized": {
+                    "title": "🗣️ Reaccionando a vídeos de programación",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "kind": "youtube#playlist",
+            "etag": "DHxWRvqSg4Yp3Y6NEe6tr3bErUE",
+            "id": "PLV8x_i1fqBw1p_BzwxKMwx_yKsGfdoXDT",
+            "snippet": {
+                "publishedAt": "2021-05-28T22:01:57Z",
+                "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+                "title": "💬 Entrevistas sobre el mundo de la programación",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/pqSZ5en1BQ8/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/pqSZ5en1BQ8/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/pqSZ5en1BQ8/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/pqSZ5en1BQ8/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/pqSZ5en1BQ8/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "midudev",
+                "localized": {
+                    "title": "💬 Entrevistas sobre el mundo de la programación",
+                    "description": ""
+                }
+            }
+        },
+        {
+            "kind": "youtube#playlist",
+            "etag": "Wn1uLrr-GRXSWsX4U20LnQk-VRk",
+            "id": "PLV8x_i1fqBw13VPoOpOBdtlmqhgh5Y2E2",
+            "snippet": {
+                "publishedAt": "2021-04-26T17:03:48Z",
+                "channelId": "UC8LeXCWOalN8SxlrPcG-PaQ",
+                "title": "Buenas prácticas JavaScript ✅",
+                "description": "",
+                "thumbnails": {
+                    "default": {
+                        "url": "https://i.ytimg.com/vi/jmxZrIHPRDg/default.jpg",
+                        "width": 120,
+                        "height": 90
+                    },
+                    "medium": {
+                        "url": "https://i.ytimg.com/vi/jmxZrIHPRDg/mqdefault.jpg",
+                        "width": 320,
+                        "height": 180
+                    },
+                    "high": {
+                        "url": "https://i.ytimg.com/vi/jmxZrIHPRDg/hqdefault.jpg",
+                        "width": 480,
+                        "height": 360
+                    },
+                    "standard": {
+                        "url": "https://i.ytimg.com/vi/jmxZrIHPRDg/sddefault.jpg",
+                        "width": 640,
+                        "height": 480
+                    },
+                    "maxres": {
+                        "url": "https://i.ytimg.com/vi/jmxZrIHPRDg/maxresdefault.jpg",
+                        "width": 1280,
+                        "height": 720
+                    }
+                },
+                "channelTitle": "midudev",
+                "localized": {
+                    "title": "Buenas prácticas JavaScript ✅",
+                    "description": ""
+                }
+            }
+        }
+    ]
+}

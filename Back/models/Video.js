@@ -30,6 +30,7 @@ const VideoSchema = Schema({
     title: String,
     description:  String,
     thumbnails: String,
+    url: String,
     youtube: {
         type: Schema.Types.ObjectId,
         ref: 'Youtube'

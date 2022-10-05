@@ -55,8 +55,6 @@ const getListAndVideosById = async (developer) => {
     try {
 
         const youtube = await Youtube.findOne({ developer: developer });
-
-
         const videos = await Videos.find({ youtube: youtube._id });
         const lists = await Lists.find({ youtube: youtube._id });
         return { lists, videos }

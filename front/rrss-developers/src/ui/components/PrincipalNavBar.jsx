@@ -11,10 +11,10 @@ const PrincipalNavBar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="developers">Developers</Nav.Link>
-              <Nav.Link href="youtube">Youtube</Nav.Link>
-              <Nav.Link href="github">Github</Nav.Link>
-              <Nav.Link href="twitter">Twitter</Nav.Link>
+              <Nav.Link href="/developers">Developers</Nav.Link>
+              <Nav.Link href="/youtube">Youtube</Nav.Link>
+              <Nav.Link href="/github">Github</Nav.Link>
+              <Nav.Link href="/twitter">Twitter</Nav.Link>
 
             </Nav>
           </Navbar.Collapse>

@@ -2,7 +2,9 @@ const axios = require('axios');
 const searchUrl = 'https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=channel&q=';
 const urlLists = 'https://youtube.googleapis.com/youtube/v3/playlists?part=id%2Csnippet&channelId=';
 const urlVideos = 'https://www.googleapis.com/youtube/v3/search?key='
-const maxVideos = 2
+const reproductionUrlVideos ="https://www.youtube.com/watch?v="
+const reproductionUrlLists="https://www.youtube.com/playlist?list="
+const maxVideos = 5
 
 const getChannelDetails = async (url_code) => {
     try {
@@ -36,7 +38,8 @@ const getListDetails = async (channelId) => {
                 list_id: item.id,
                 title: item.snippet.title,
                 description: item.snippet.description,
-                thumbnails: item.snippet.thumbnails.medium.url
+                thumbnails: item.snippet.thumbnails.medium.url,
+                url: `${reproductionUrlLists}${item.id}`
             }
         })
 
@@ -58,7 +61,8 @@ const getVideoDetails = async (channelId) => {
                 video_id: item.id.videoId,
                 title: item.snippet.title,
                 description: item.snippet.description,
-                thumbnails: item.snippet.thumbnails.medium.url
+                thumbnails: item.snippet.thumbnails.medium.url,
+                url: `${reproductionUrlVideos}${item.id.videoId}`
             }
         })
         return videosInfo

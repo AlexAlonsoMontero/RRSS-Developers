@@ -120,8 +120,6 @@ router
  *                      $ref: "#/components/schemas/Twitter"
  */
 
-
-
 router
     .get('/git-hub/update', GithubControllers.updateGitInfo)
     .get('/youtube/update', YoutubeController.updateYoutubeInfo)
@@ -551,3 +549,4 @@ router
 
 
 module.exports = router;
+ 

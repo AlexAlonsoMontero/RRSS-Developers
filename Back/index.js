@@ -3,20 +3,20 @@ const morgan = require('morgan');
 const { swaggerDocs } = require('./v1/swagger')
 
 const app = express();
-
-require('dotenv').config();
-const port = process.env.WEB_PORT;
-const host = process.env.WEB_HOST;
-
 const routes = require('./v1/routes/routes');
 
+const cors = require('cors')
+require('dotenv').config();
+
+app.use(cors());
 app.use(express.json());
 app.use(morgan('combined'));
-
 
 //Routes
 app.use('/api/v1/', routes);
 
+const port = process.env.WEB_PORT;
+const host = process.env.WEB_HOST;
 
 if (process.env.NODE_ENV != 'test') {
 

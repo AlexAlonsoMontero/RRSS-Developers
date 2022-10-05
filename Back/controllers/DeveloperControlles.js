@@ -8,9 +8,7 @@ const getDevelopersBasicInfo = async (request, response) => {
             .send({
                 info: "Información de developers",
                 status: "OK",
-                data: {
-                    data: developers
-                }
+                developers: developers
             })
     } catch (error) {
         response
@@ -33,9 +31,8 @@ const getDevelopers = async (request, response) => {
             .send({
                 info: "Información de developers",
                 status: "OK",
-                data: {
-                    data: developers
-                }
+                developers: developers
+
             })
     } catch (error) {
         response
