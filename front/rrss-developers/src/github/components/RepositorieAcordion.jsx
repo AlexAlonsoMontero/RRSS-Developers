@@ -2,7 +2,6 @@ import { Accordion, Button } from "react-bootstrap";
 
 
 const RepositorieAcordion = ({repoData}) => {
-    console.log(repoData)
     // name, html_url, description, language
 
     return (
@@ -15,7 +14,7 @@ const RepositorieAcordion = ({repoData}) => {
                         <p><strong>Usuario:</strong> {repoData.gitHub.gitUser}</p> 
                         <a href={repoData.html_url}><Button variant="dark">Visitar repositorio</Button></a>
                         <a href= {`https://github.com/${repoData.gitHub.gitUser}`}>
-                            <Button variant="dark" className="ms-2">Visitar perfil {repoData.gitHub.gitUser}</Button>
+                            <Button variant="dark" className="ms-3">Visitar perfil {repoData.gitHub.gitUser}</Button>
                             </a>
                     </Accordion.Body>
                 </Accordion.Item>

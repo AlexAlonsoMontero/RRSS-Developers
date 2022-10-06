@@ -14,7 +14,6 @@ const PrincipalNavBar = () => {
               <Nav.Link href="/developers">Developers</Nav.Link>
               <Nav.Link href="/youtube">Youtube</Nav.Link>
               <Nav.Link href="/github">Github</Nav.Link>
-              <Nav.Link href="/twitter">Twitter</Nav.Link>
 
             </Nav>
           </Navbar.Collapse>

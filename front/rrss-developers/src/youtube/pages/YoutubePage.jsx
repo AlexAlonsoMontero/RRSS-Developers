@@ -14,7 +14,7 @@ const YoutubePage = () => {
   
   useEffect(() => {
     dispatch(loadDevelopers());
-    if (params.developer_id && params.developer_id !== "youtube") {
+    if (params.developer_id && params.developer_id !== "") {
       if (!activeDeveloper) {
         dispatch(setActiveDeveloper(params.developer_id));
       }

@@ -6,9 +6,10 @@ import PrincipalNavBar from "./ui/components/PrincipalNavBar";
 function App() {
   return (
     <>
-      <PrincipalNavBar />
-      <PrincipalHeader />
       <BrowserRouter>
+        <PrincipalNavBar />
+        <PrincipalHeader />
+
         <AppRouter />
       </BrowserRouter>
     </>

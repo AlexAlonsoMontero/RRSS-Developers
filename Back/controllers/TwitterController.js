@@ -9,7 +9,7 @@ const getTwitterById = async(request, response) => {
             .send({
                 status: "OK",
                 info: "Tweets por id",
-                data: tweets
+                tweets
             })
     } catch (error) {
         response

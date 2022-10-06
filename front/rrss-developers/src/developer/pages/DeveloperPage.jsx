@@ -10,12 +10,7 @@ const DeveloperPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(loadDevelopers());
-
-  }, [])
-
-
-
-
+  }, [dispatch])
 
   return (
     <Container fluid className=" p-4 d-flex align-items-center flex-column">

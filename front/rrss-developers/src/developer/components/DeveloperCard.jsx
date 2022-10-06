@@ -23,14 +23,10 @@ function DeveloperCard({ developer }) {
 
       <Container className="developer-card h-100">
         <Row className="h-100">
-          <Col className="p-0 bg-secondary text-light d-flex  flex-column m-0 justify-content-between" md={12} lg={3}>
+          <Col className="p-0 bg-secondary text-light d-flex  flex-column m-0 " md={12} lg={3}>
             <Card.Img src={gitHub.avatar_url} className="shadow col-4" />
             <Card.Title className="m-2">{name}</Card.Title>
-            <Link to="developer-profile">
-              <Container fluid className="p-0">
-                <Button variant="dark" className="w-100">Ver perfil</Button>
-              </Container>
-            </Link>
+            
           </Col>
           <Col className="p-0" >
             <Card.Header>
@@ -61,7 +57,7 @@ function DeveloperCard({ developer }) {
                     </span>
                   </Card.Text>
                   <Container className="text-center">
-                    <Button variant="dark" >Repositorios</Button>
+                    <Link to={`github/${gitHub._id}`}><Button variant="dark" >Repositorios</Button></Link>
 
                   </Container>
                 </>
@@ -93,7 +89,7 @@ function DeveloperCard({ developer }) {
                     <strong>Followers: </strong> {twitter.followers} <br />
                   </Card.Text>
                   <Container className="text-center">
-                    <Button variant="primary" >Últimos twitts</Button>
+                  <Link to={`twitter/${twitter._id}`}><Button variant="primary" >Últimos twitts</Button></Link>
 
                   </Container>
                 </>
