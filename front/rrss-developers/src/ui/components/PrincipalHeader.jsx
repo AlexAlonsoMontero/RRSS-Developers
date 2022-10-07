@@ -24,12 +24,13 @@ function PrincipalHeader() {
   const onHandleSubmit = (e) => {
     e.preventDefault();
     if (
-      (searchText === '' || searchText === undefined) &&
+      (searchText === '' || searchText === undefined) ||
       (objetiveSearch.github === false && objetiveSearch.youtube === false)) {
+        
       setalertMessage('')
     }else{
       setalertMessage('d-none');
-      navigate(`search/?youtube=${objetiveSearch.youtube}&github=${objetiveSearch.github}`)
+      navigate(`search/?youtube=${objetiveSearch.youtube}&github=${objetiveSearch.github}&text=${searchText}`)
     }
 
   }

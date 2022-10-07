@@ -29,7 +29,13 @@ export const developerSlice = createSlice({
             state.repositories = [...action.payload]
         },
         setTweets: (state, action) => {
-            state.tweets = action.payload
+            state.tweets = [...action.payload]
+        },clearVideos:(state)=>{
+            state.videos = []
+        },clearLists:(state)=>{
+            state.lists = []
+        },clearRepositories:(state)=>{
+            state.repositories = []
         }
     }
 });
@@ -40,7 +46,10 @@ export const {
     setVideos,
     setLists,
     setRepositories,
-    setTweets
+    setTweets,
+    clearVideos,
+    clearLists,
+    clearRepositories
 } = developerSlice.actions
 
 export default developerSlice.reducer

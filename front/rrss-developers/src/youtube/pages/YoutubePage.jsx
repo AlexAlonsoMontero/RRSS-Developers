@@ -9,9 +9,9 @@ import { CardGroup, Col, Container, Row } from "react-bootstrap"
 
 const YoutubePage = () => {
   const dispatch = useDispatch();
-  const  params  = useParams();
+  const params = useParams();
   const { activeDeveloper, videos, lists } = useSelector(state => state.developer)
-  
+
   useEffect(() => {
     dispatch(loadDevelopers());
     if (params.developer_id && params.developer_id !== "") {
@@ -19,10 +19,10 @@ const YoutubePage = () => {
         dispatch(setActiveDeveloper(params.developer_id));
       }
       dispatch(loadVideosAndList(params.developer_id))
-    }else{
+    } else {
       dispatch(loadVideosAndList())
     }
-  }, [activeDeveloper, params.developer_id,dispatch])
+  }, [activeDeveloper, params.developer_id, dispatch])
 
 
 
@@ -34,23 +34,23 @@ const YoutubePage = () => {
         <h2 className="mb-4 ">Vídeos y listas de Youtube</h2>
         <CardGroup >
           <Row className="d-flex justify-content-center" >
-            {videos.length > 0 && videos.map(video=>{
-              return(
-                <Col className="mb-3" lg={3} md={4} sm={6}  key={video.video_id}>
-                  <VideoListCard  mediaData={video} typeOfMedia={"Vídeo"} />
+            {videos.length > 0 && videos.map(video => {
+              return (
+                <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={video.video_id}>
+                  <VideoListCard mediaData={video} typeOfMedia={"Vídeo"} />
                 </Col>
               )
             })
-            
+
             }
-            {lists.length > 0 && lists.map(list=>{
-              return(
-                <Col className="mb-3" lg={3} md={4} sm={6}  key={list.list_id} >
-                  <VideoListCard  mediaData={list} typeOfMedia={"Lista de reproducción"}/>
+            {lists.length > 0 && lists.map(list => {
+              return (
+                <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={list.list_id} >
+                  <VideoListCard mediaData={list} typeOfMedia={"Lista de reproducción"} />
                 </Col>
               )
             })
-            
+
             }
 
           </Row>

@@ -1,5 +1,5 @@
 import { Button, Card} from "react-bootstrap"
-export const VideoListCard = ({ mediaData, typeOfMedia, url_code }) => {
+export const VideoListCard = ({ mediaData, typeOfMedia }) => {
     
     return (
         <Card className="shadow h-100 mw-50" border="dark">
