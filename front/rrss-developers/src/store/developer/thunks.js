@@ -30,7 +30,7 @@ export const loadTweets = (Twitter_id) => {
 }
 export const searchData = (searchIn, searchText) => {
     return async (dispatch) => {
-
+        console.log(searchIn)
         if (searchIn.youtube === true) {
             const { data } = await developerApi.get(`/search/youtube/?video=${searchText}&list=${searchText}`);
             console.log(data);
@@ -47,8 +47,12 @@ export const searchData = (searchIn, searchText) => {
 
         }
         if (searchIn.github === true){
-            const { data } = await developerApi.get(`/git-hub/repositories/search/?repo=${searchText}`);
-            console.log(data)
+            console.log('entra')
+            const  { data }   = await developerApi.get(`/search/git-hub/repositories/?repo=${searchText}`);
+            if(data.repositories) {
+                dispatch(setRepositories(data.repositories))
+            }
+            
         }
 
     }

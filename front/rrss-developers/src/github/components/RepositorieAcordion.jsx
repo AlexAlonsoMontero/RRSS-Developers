@@ -7,7 +7,7 @@ const RepositorieAcordion = ({repoData}) => {
     return (
         <>
                 <Accordion.Item eventKey={repoData._id}>
-                    <Accordion.Header><strong>{repoData.name}</strong> </Accordion.Header>
+                    <Accordion.Header className="d-flex h-100"><strong>{repoData.name}</strong> </Accordion.Header>
                     <Accordion.Body>
                         <p><strong>Descripción:</strong> {repoData.description}</p>
                         <p><strong>Lenguaje:</strong> {repoData.dev_language}</p> 

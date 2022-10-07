@@ -61,14 +61,13 @@ const getReposByLanguage = async (request, response) => {
 
 const searchText = async (request, response) => {
     try {
-
         const data = await RespositoryServices.searchText(request.query.repo)
         response
             .status(200)
             .send({
                 info: "Busqueda en git por texto",
                 status: "OK",
-                data
+                repositories: data
             })
     } catch (error) {
         response

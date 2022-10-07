@@ -28,14 +28,14 @@ const SearchesPage = () => {
 
   if (lists.length === 0 && videos.length === 0 && repositories.length === 0) {
     return (
-      <Alert variant="danger" className="mt-2">No se han encontrado resultados para la búsqueda</Alert>
+      <Alert variant="danger" className="mt-2 text-center w-50 m-auto">No se han encontrado resultados para la búsqueda</Alert>
     )
   }
 
   return (
-    <Container fluid className="mt-2">
+    <Container fluid className="mt-2 mb-5">
       <h2 className="text-center">Resultados de búsqueda</h2>
-      <Alert variant="dark" className="text-center w-50 m-auto">Resultados de la búsqueda: Vídeos: {videos.length} Listas: {lists.length} Repositorios {repositories.length} </Alert>
+      <Alert variant="dark" >Resultados de la búsqueda: Vídeos: {videos.length} Listas: {lists.length} Repositorios {repositories.length} </Alert>
       {(lists.length > 0 || videos.length > 0) &&
         <Container fluid>
           <h3 className="mb-4 text-center mt-2">Vídeos y listas Youtube</h3>
@@ -61,10 +61,10 @@ const SearchesPage = () => {
               }
             </Row>
           </CardGroup>
-
-
-          {repositories.length > 0 &&
-            <Container fluid className="mt-5 text-center">
+        </Container>
+      }
+      {repositories.length > 0 &&
+            <Container  className="mt-5 text-center">
               <h3 className="mb-4 ">Repositorios de Github</h3>
               <Accordion >
                 <Row>
@@ -82,8 +82,6 @@ const SearchesPage = () => {
             </Container>
 
           }
-        </Container>
-      }
 
     </Container>
   )

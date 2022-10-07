@@ -28,23 +28,24 @@ const getAllListAndVideos = async () => {
 
 const searchText = async (params) => {
     try {
-        const result = []
-        if (params.video) {
-            const videos = await Videos.find({ $text: { $search: params.video, $caseSensitive: false, $language: "es" } });
-            if (videos.length > 0) result.push({ videos: videos });
+        const result = {}
+        if (params.video ) {
+            const videos = await Videos.find({ $text: { $search: params.video, $caseSensitive: false } });
+            if (videos.length > 0) result.videos = videos ;
         }
         if (params.list) {
-            const lists = await Lists.find({ $text: { $search: params.video, $caseSensitive: false, $language: "es" } })
-            if (lists.length >0) result.push({lists: lists});
+            const lists = await Lists.find({ $text: { $search: params.list, $caseSensitive: false } })
+            if (lists.length >0) result.lists= lists;
         }
 
-        if (result.length === 0) throw new Error("No se ha localizado resultados en Youtube para la búsqueda de texto")
-
+        if (result === {}) throw new Error("No se ha localizado resultados en Youtube para la búsqueda de texto")
+        console.log(result)
         return result
 
     } catch (error) {
+        console.log(error)
         throw {
-            status: error?.code || 500,
+            status:  400,
             message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"
         }
     }

@@ -12,7 +12,7 @@ const getListAndVideos = async (request, response) => {
                 info: "Todos los videeos y listas almacenados",
                 videosAndList: {
                     videos: listVideos.videos,
-                    lists: listVideos.list
+                    lists: listVideos.lists
                 }
             })
     } catch (error) {
@@ -55,7 +55,8 @@ const searchText = async (request, response) => {
             .send({
                 info: "Búsqueda de vídeos por texto",
                 status: "OK",
-                data
+                videos: data.videos,
+                lists: data.lists
             })
     } catch (error) {
         response
@@ -63,6 +64,7 @@ const searchText = async (request, response) => {
             .send({
                 status: "FAILED",
                 message: error?.message || "No seha podido localizar datos de videos y listas en Base de datos",
+                code: error.status
             })
     }
 }
