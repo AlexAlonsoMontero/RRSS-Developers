@@ -10,6 +10,7 @@ export const loadDevelopers = () => {
 export const loadVideosAndList = (developer_id = "") => {
     return async (dispatch) => {
         const { data } = await developerApi.get(`/youtube/list-videos/${developer_id}`);
+        console.log(data)
         dispatch(setVideos(data.videosAndList.videos))
         dispatch(setLists(data.videosAndList.lists))
     }
@@ -25,7 +26,7 @@ export const loadRespositories = (gitHub_id = "") => {
 export const loadTweets = (Twitter_id) => {
     return async (dispatch) => {
         const { data } = await developerApi.get(`/twitter/${Twitter_id}`)
-        dispatch(setTweets(data.tweets))
+        dispatch(setTweets(data.tweets));
     }
 }
 export const searchData = (searchIn, searchText) => {

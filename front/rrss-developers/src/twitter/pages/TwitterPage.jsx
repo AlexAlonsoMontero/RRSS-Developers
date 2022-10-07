@@ -13,6 +13,7 @@ const TwitterPage = () => {
   useEffect(() => {
     dispatch(loadTweets(twitterId))
   }, [dispatch, twitterId])
+  console.log(tweets)
   if(Object.keys(tweets).length ===0){
     
     return(<h1>Cargando...</h1>)

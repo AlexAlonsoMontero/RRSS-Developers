@@ -29,7 +29,7 @@ export const developerSlice = createSlice({
             state.repositories = [...action.payload]
         },
         setTweets: (state, action) => {
-            state.tweets = [...action.payload]
+            state.tweets = {...action.payload}
         },clearVideos:(state)=>{
             state.videos = []
         },clearLists:(state)=>{

@@ -4,7 +4,7 @@ export const VideoListCard = ({ mediaData, typeOfMedia }) => {
     return (
         <Card className="shadow h-100 mw-50" border="dark">
             <Card.Img variant="top" src={mediaData.thumbnails} className="shadow col-4" />
-            <Card.Body className="p-0">
+            <Card.Body className="p-0 row-youtube-card">
                 <Card.Title className="bg-secondary text-light  p-2 ">{mediaData.title}</Card.Title>
                 <Card.Subtitle className="p-2"><strong>Tipo de medio:</strong> {typeOfMedia}  </Card.Subtitle>
                 <Card.Text className="p-2">

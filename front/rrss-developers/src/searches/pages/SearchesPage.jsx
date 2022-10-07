@@ -44,7 +44,7 @@ const SearchesPage = () => {
             <Row className="d-flex justify-content-center" >
               {lists.map(list => {
                 return (
-                  <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={list._id}>
+                  <Col className="mb-3" xl={3} lg={4} md={6} sm={6} key={list._id}>
                     <VideoListCard mediaData={list} typeOfMedia="Lista" />
                   </Col>
                 )
@@ -52,7 +52,7 @@ const SearchesPage = () => {
               }
               {videos.map(video => {
                 return (
-                  <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={video._id}>
+                  <Col className="mb-3" xl={3} lg={4} md={6} sm={6} key={video._id}>
                     <VideoListCard mediaData={video} typeOfMedia="Vídeo" />
                   </Col>
                 )

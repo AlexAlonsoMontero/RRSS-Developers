@@ -36,7 +36,7 @@ const YoutubePage = () => {
           <Row className="d-flex justify-content-center" >
             {videos.length > 0 && videos.map(video => {
               return (
-                <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={video.video_id}>
+                <Col className="mb-3" xl={3} lg={4} md={6} sm={6} key={video.video_id}>
                   <VideoListCard mediaData={video} typeOfMedia={"Vídeo"} />
                 </Col>
               )
@@ -45,7 +45,7 @@ const YoutubePage = () => {
             }
             {lists.length > 0 && lists.map(list => {
               return (
-                <Col className="mb-3" xl={2} lg={3} md={4} sm={6} key={list.list_id} >
+                <Col className="mb-3" xl={3} lg={4} md={6} sm={6} key={list.list_id} >
                   <VideoListCard mediaData={list} typeOfMedia={"Lista de reproducción"} />
                 </Col>
               )

@@ -41,7 +41,8 @@ function PrincipalHeader() {
         <Container className="d-flex flex-column align-items-center justify-content-center"  >
           <Col md="auto" id="header-form" className="p-3">
             <h1> RRSS Developers</h1>
-            <p>En esta eb podrás consultar de un solo vistazo , o hacer búsquedas en los aportes que nos dejan los mejores influencers de la comunidad developer en Youtube Github y Twitter</p>
+            <p>Actualizamos directamente desde las API de GitHub, Google y Twitter, las últimas publicaciones de los mejores Developers. Esto está pensado
+            para ti que estas empezando y que puedas encontrar toda la información necesaria en una sola web</p>
             <Form onSubmit={onHandleSubmit}>
               <Form.Group className="d-flex flex-wrap">
                 <Form.Control

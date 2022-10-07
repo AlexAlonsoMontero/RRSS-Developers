@@ -11,10 +11,10 @@ const { request } = require('express');
 const getAllListAndVideos = async () => {
     try {
         const videos = await Videos.find();
-        const list = await Lists.find();
+        const lists = await Lists.find();
         return {
             videos,
-            list
+            lists
         }
     } catch (error) {
         throw {
