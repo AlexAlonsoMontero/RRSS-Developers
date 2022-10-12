@@ -32,6 +32,8 @@ const getDevelopers =async()=>{
         throw{
             status: error?.code || 500,
             message: error?.message || "No se ha podido crear coleccioens en BD",
+            data: error,
+            info: process.env.DB_URI
         }
     }
 

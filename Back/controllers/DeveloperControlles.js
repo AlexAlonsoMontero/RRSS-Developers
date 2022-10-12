@@ -41,7 +41,8 @@ const getDevelopers = async (request, response) => {
                 status: "FAILED",
                 data: {
                     status: error?.code || error?.status || 500,
-                    info: error.message
+                    info: error.message,
+                    error:error
                 }
             })
     }
