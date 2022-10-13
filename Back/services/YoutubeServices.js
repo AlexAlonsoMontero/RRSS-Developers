@@ -39,11 +39,9 @@ const searchText = async (params) => {
         }
 
         if (result === {}) throw new Error("No se ha localizado resultados en Youtube para la búsqueda de texto")
-        console.log(result)
         return result
 
     } catch (error) {
-        console.log(error)
         throw {
             status:  400,
             message: error?.message || "No se ha podido localizar los datos de los canales de Youtube"

@@ -26,6 +26,7 @@ export const developerSlice = createSlice({
             state.lists = [...action.payload]
         },
         setRepositories: (state, action) => {
+            
             state.repositories = [...action.payload]
         },
         setTweets: (state, action) => {

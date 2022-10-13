@@ -24,12 +24,13 @@ const getReposByDeveloper = async (request, response) => {
     try {
         const gitHubId = { gitHub: request.params.gitHubId }
         const repos = await RespositoryServices.getRepoByParam(gitHubId)
+        
         response
             .status(200)
             .send({
                 info: "Repos por developer",
                 status: "OK",
-                data: repos
+                repos
             })
     } catch (error) {
         response

@@ -23,10 +23,6 @@ const getAllRepositories = async () => {
 
 const getRepoByParam = async(params = {})=>{
     try {
-        // const repos = await Repository.find().populate({
-        //     path: "gitHub",
-        //     match: { "gitHub.gitUser": "carlosazaustre" }
-        // })
         const repos = await Repository.find(params).populate('gitHub', 'gitUser')
         if (repos.length === 0) throw new NotFoundInBDError('repositories')
         return repos
@@ -42,7 +38,7 @@ const getRepoByParam = async(params = {})=>{
 
 const searchText = async(params) =>{
     try {
-        const repositories = await Repository.find({$text:{$search:params, $caseSensitive:false, $language:"es"}})
+        const repositories = await Repository.find({$text:{$search:params, $caseSensitive:false, $language:"es"}}).populate('gitHub', 'gitUser')
         if (repositories.length ===0) throw new Error("No hay resultados para la búsqueda de texto en el respositorio");
         return repositories
     } catch (error) {

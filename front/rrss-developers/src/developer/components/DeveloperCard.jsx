@@ -89,7 +89,7 @@ function DeveloperCard({ developer }) {
                     <strong>Followers: </strong> {twitter.followers} <br />
                   </Card.Text>
                   <Container className="text-center">
-                  <Link to={`twitter/${twitter._id}`}><Button variant="primary" >Últimos twitts</Button></Link>
+                  <Link to={`twitter/${twitter._id}`}><Button variant="primary" >Últimos tweets</Button></Link>
 
                   </Container>
                 </>
